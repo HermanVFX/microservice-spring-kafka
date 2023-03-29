@@ -1,0 +1,288 @@
+openapi: 3.0.0
+info:
+  title: User Service - OpenAPI 1.0
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/user
+tags:
+  - name: User
+    description: User API
+  - name: Phone
+    description: Phone API
+  - name: Email
+    description: Email API
+  - name: Account
+    description: Account API
+# --- Controllers ---
+paths:
+  /v1/users:
+    post:
+      operationId: createUser
+      summary: Create new user
+      tags:
+        - User
+      requestBody:
+        description: Short user DTO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShortUserDto'
+        required: true
+      responses:
+        '201':
+          description: created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+
+  /api/v1/users:
+    get:
+      tags:
+        - User
+      summary: find all users
+      operationId: findAllUsers
+      responses:
+        '200':
+          description: Get all users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+
+  /api/v1/users/{userId}:
+    get:
+      tags:
+        - User
+      summary: find users by id
+      operationId: findUsersById
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            format: uuid
+            nullable: false
+      responses:
+        '200':
+          description: Get user
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserDto'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+    delete:
+      tags:
+        - User
+      summary: Delete user
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: User id to delete
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Delete user
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+    put:
+      operationId: updateUser
+      summary: Update user
+      tags:
+        - User
+      parameters:
+        - name: userId
+          in: path
+          description: User id to update
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: User DTO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        '200':
+          description: updated user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+
+  /api/v1/users/department/{departmentId}:
+    get:
+      tags:
+        - User
+      summary: find users by id department
+      operationId: findUsersByDepartmentId
+      parameters:
+        - in: path
+          name: departmentId
+          required: true
+          schema:
+            type: string
+            format: uuid
+            nullable: false
+      responses:
+        '200':
+          description: Get all users in department
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+# --- Dtos ---
+components:
+  schemas:
+# --- User ---
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: User id
+        firstName:
+          type: string
+          description: User first name
+        lastName:
+          type: string
+          description: User last name
+        birthday:
+          type: string
+          format: date
+          description: User birthday
+        departmentId:
+          type: string
+          format: uuid
+        email:
+          $ref: "#/components/schemas/EmailDto"
+        phone:
+          $ref: "#/components/schemas/PhoneDto"
+        account:
+          $ref: "#/components/schemas/AccountDto"
+
+    ShortUserDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: User first name
+        lastName:
+          type: string
+          description: User last name
+        birthday:
+          type: string
+          format: date
+          description: User birthday
+# --- Phone ---
+    PhoneDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Phone id
+        workPhone:
+          type: string
+          description: User last name
+        homePhone:
+          type: string
+          description: User last name
+        alternativePhone:
+          type: string
+          description: User last name
+        user:
+          $ref:  '#/components/schemas/UserDto'
+# --- Email ---
+    EmailDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Email id
+        emailAddress:
+          type: string
+          description: Email
+        user:
+          $ref: '#/components/schemas/UserDto'
+# --- Account ---
+    AccountDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Account id
+        registrationDate:
+          type: string
+          format: date
+          description: Account registration date
+        updateDate:
+          type: string
+          format: date
+          description: Account update date
+        isActive:
+          type: boolean
+          description: Account status
+        user:
+          $ref: '#/components/schemas/UserDto'
