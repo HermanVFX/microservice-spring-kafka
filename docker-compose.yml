@@ -1,0 +1,58 @@
+version: "3"
+services:
+# DataBase
+# - PostgreSQL database
+  postgres_db:
+    image: postgres:15.1
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: "172440"
+      POSTGRES_DB: postgres
+#    volumes:
+#      - ./postgres/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
+#      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+# - Mongo database
+  mongo_db:
+    image: "mongo:4.4.3"
+    container_name: mongo-db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: "172440"
+    ports:
+      - "27017:27017"
+# Services
+# User-service
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      DB_URL: jdbc:postgresql://postgres_db:5432/simple-microservice?currentSchema=user_service
+      DB_USER: postgres
+      DB_PASSWORD: "172440"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres_db
+# Department-service
+  department-service:
+    build: ./department-service
+    container_name: department-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+#      SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: $MONGO_DB
+#      SPRING_DATA_MONGODB_AUTO_INDEX_CREATION: $MONGO_AUTO_INDEX_CREATION
+      SPRING_DATA_MONGODB_HOST: mongo_db
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_USERNAME: mongo
+      SPRING_DATA_MONGODB_PASSWORD: "172440"
+      SPRING_DATA_MONGODB_DATABASE: department-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo_db
