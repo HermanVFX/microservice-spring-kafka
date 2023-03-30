@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface UserRepository extends CrudRepository<User, UUID> {
-    List<User> findAllUser();
+    List<User> findAll();
     List<User> findAllByDepartmentId(UUID departmentId);
-    List<User> findAllById(UUID userId);
 }

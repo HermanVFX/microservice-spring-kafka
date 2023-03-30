@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  title: Department Service - OpenAPI 1.0
+  version: 1.0.0
+servers:
+  - url: http://localhost:8081/api/department
+tags:
+  - name: Department
+    description: Department API
+  - name: Employee
+    description: Employee API
+  - name: Project
+    description: Project API
+# --- Controllers ---
+# Department controller
+paths:
+  /v1/department:
+    post:
+      operationId: createDepartment
+      summary: Create new department
+      tags:
+        - Department
+      requestBody:
+        description: Short dDepartment DTO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShortDepartmentDto'
+        required: true
+      responses:
+        '201':
+          description: created department
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentDto'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+# --- Dtos ---
+components:
+  schemas:
+# --- Department ---
+    DepartmentDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Department id
+        departmentName:
+          type: string
+          description: Department name
+        employees:
+          type: array
+          description: Employees in department
+          items:
+            $ref: '#/components/schemas/EmployeeDto'
+        projects:
+          type: array
+          description: Department's projects
+          items:
+            $ref: '#/components/schemas/ProjectDto'
+
+    ShortDepartmentDto:
+      type: object
+      properties:
+        departmentName:
+          type: string
+          description: Department name
+# --- Employee ---
+    EmployeeDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Employee id
+        position:
+          type: string
+          description: Employee position
+          enum:
+            - MANAGER
+            - DEVELOPER
+            - DESIGNER
+            - LEAD
+            - TESTER
+        userId:
+          type: string
+          format: uuid
+          description: User
+        project:
+          $ref: '#/components/schemas/ProjectDto'
+        department:
+          $ref: '#/components/schemas/DepartmentDto'
+# --- Project ---
+    ProjectDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Project id
+        name:
+          type: string
+          description: Project name
+        description:
+          type: string
+          description: Project description
+        employees:
+          type: array
+          description: Employees on project
+          items:
+            $ref: '#/components/schemas/EmployeeDto'
+        department:
+          $ref: '#/components/schemas/DepartmentDto'
+# --- User ---
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: User id
+        firstName:
+          type: string
+          description: User first name
+        lastName:
+          type: string
+          description: User last name
+        birthday:
+          type: string
+          format: date
+          description: User birthday
+        departmentId:
+          type: string
+          format: uuid
+#        email:
+#          $ref: "#/components/schemas/EmailDto"
+#        phone:
+#          $ref: "#/components/schemas/PhoneDto"
+#        account:
+#          $ref: "#/components/schemas/AccountDto"

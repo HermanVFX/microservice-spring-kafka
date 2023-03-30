@@ -14,6 +14,7 @@ tags:
   - name: Account
     description: Account API
 # --- Controllers ---
+# User controller
 paths:
   /v1/users:
     post:
@@ -189,6 +190,7 @@ paths:
           description: Method is not available
         '500':
           description: Server error
+# Phone controller
 # --- Dtos ---
 components:
   schemas:

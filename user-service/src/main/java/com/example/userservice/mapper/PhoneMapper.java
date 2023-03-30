@@ -4,7 +4,7 @@ import com.example.userservice.dto.PhoneDto;
 import com.example.userservice.model.Phone;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = UserMapper.class)
+@Mapper(componentModel = "spring")
 public interface PhoneMapper {
     PhoneDto phoneToPhoneDto(Phone phone);
 }

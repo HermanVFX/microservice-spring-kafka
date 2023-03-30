@@ -5,7 +5,7 @@ import com.example.userservice.model.Account;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = UserMapper.class)
+@Mapper(componentModel = "spring")
 public interface AccountMapper {
 
     @Mapping(target = "isActive", ignore = true)

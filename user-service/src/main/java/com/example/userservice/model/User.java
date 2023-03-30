@@ -37,7 +37,7 @@ public class User {
     @Column(name = "birthday", nullable = false)
     private Date birthday;
 
-    @Column(name = "department_id", nullable = false)
+    @Column(name = "department_id")
     private UUID departmentId;
 
     @OneToOne(cascade = CascadeType.ALL)

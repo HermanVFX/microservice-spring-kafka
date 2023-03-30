@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
-@RestController("/v1/users")
+@RestController
 @AllArgsConstructor
 public class UserController implements UserApi {
 
@@ -21,6 +21,7 @@ public class UserController implements UserApi {
     @Override
     public ResponseEntity<UserDto> createUser(ShortUserDto shortUserDto) {
         UserDto newUser = userService.create(shortUserDto);
+        userService.produce(newUser.getId());
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
@@ -44,8 +45,9 @@ public class UserController implements UserApi {
 
     @Override
     public ResponseEntity<List<UserDto>> findUsersById(UUID userId) {
-        List<UserDto> users = userService.findUsersById(userId);
-        return new ResponseEntity<>(users, HttpStatus.OK);
+//        List<UserDto> users = userService.findUsersById(userId);
+//        return new ResponseEntity<>(users, HttpStatus.OK);
+        return null;
     }
 
     @Override

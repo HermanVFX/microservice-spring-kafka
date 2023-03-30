@@ -12,12 +12,14 @@ public interface UserService {
 
     List<UserDto> findUsersByDepartmentId(UUID departmentId);
 
-    List<UserDto> findUsersById(UUID userId);
+    UserDto findUserById(UUID userId);
 
     UserDto create(ShortUserDto user);
 
     UserDto update(UserDto user, UUID id);
 
     void delete(UUID id);
+
+    void produce(UUID userId);
 
 }
