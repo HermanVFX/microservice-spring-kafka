@@ -29,6 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @KafkaListener(id = "User", topics = {"server.user"}, containerFactory = "singleFactory")
     public void consume(UserDto user) {
+        System.out.println("---------------------------------");
         log.info("=> consumed {}", writeValueAsString(user));
     }
 
