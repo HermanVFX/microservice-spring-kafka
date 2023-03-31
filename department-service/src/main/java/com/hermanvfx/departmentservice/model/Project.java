@@ -20,25 +20,16 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Document(collection = "project")
 public class Project {
 
     @Id
-    @Column(name = "id", nullable = false)
     private String id;
 
     private String name;
 
     private String description;
 
-    @OneToMany(
-            mappedBy = "project",
-            cascade = {CascadeType.MERGE,
-                    CascadeType.PERSIST,
-                    CascadeType.REFRESH,
-                    CascadeType.DETACH}
-    )
     private List<Employee> employees;
 
     @ManyToOne

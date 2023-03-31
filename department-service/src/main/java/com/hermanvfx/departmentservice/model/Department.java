@@ -17,31 +17,15 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Document(collection = "department")
 public class Department {
 
     @Id
-    @Column(name = "id", nullable = false)
     private String id;
 
     private String departmentName;
 
-    @OneToMany(
-            mappedBy = "department",
-            cascade = {CascadeType.MERGE,
-                    CascadeType.PERSIST,
-                    CascadeType.REFRESH,
-                    CascadeType.DETACH}
-    )
     private List<Employee> employees;
 
-    @OneToMany(
-            mappedBy = "department",
-            cascade = {CascadeType.MERGE,
-                    CascadeType.PERSIST,
-                    CascadeType.REFRESH,
-                    CascadeType.DETACH}
-    )
     private List<Project> projects;
 }

@@ -1,1 +1,3 @@
 rootProject.name = 'microservice-spring-kafka'
+include'department-service'
+include'user-service'

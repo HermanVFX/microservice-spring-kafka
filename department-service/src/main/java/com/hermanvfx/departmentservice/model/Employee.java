@@ -21,12 +21,10 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Document(collection = "employee")
 public class Employee {
 
     @Id
-    @Column(name = "id", nullable = false)
     private String id;
 
     @Enumerated(EnumType.STRING)

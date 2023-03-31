@@ -40,7 +40,7 @@ dependencies {
 }
 
 openApiGenerate {
-    inputSpec = "$project.rootDir/src/main/resources/openapi/api-docs.yml".toString()
+    inputSpec = "$project.rootDir/user-service/src/main/resources/openapi/api-docs.yml".toString()
     outputDir = "$buildDir/generated/api" as Object
     generateModelDocumentation = true
     generatorName = "spring"

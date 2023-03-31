@@ -2,10 +2,9 @@ package com.hermanvfx.departmentservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@EnableMongoRepositories
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class DepartmentServiceApplication {
 
     public static void main(String[] args) {
