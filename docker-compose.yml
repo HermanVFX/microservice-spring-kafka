@@ -64,7 +64,7 @@ services:
     container_name: user-service
     environment:
       SPRING_PROFILES_ACTIVE: docker
-      DB_URL: jdbc:postgresql://postgres-db:5432/postgres?currentSchema=user-service
+      DB_URL: jdbc:postgresql://postgres-db:5432/postgres?currentSchema=uzers
       DB_USER: postgres_user
       DB_PASSWORD: 172440
     ports:

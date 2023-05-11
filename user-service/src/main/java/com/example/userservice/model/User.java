@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
@@ -35,7 +35,7 @@ public class User {
     private String lastName;
 
     @Column(name = "birthday", nullable = false)
-    private Date birthday;
+    private OffsetDateTime birthday;
 
     @Column(name = "department_id")
     private UUID departmentId;
@@ -52,5 +52,15 @@ public class User {
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
     private Account account;
 
-
+    @Column(name = "create_time", nullable = false)
+    private OffsetDateTime create;
+    @Column(name = "update_time")
+    private OffsetDateTime update;
+    @Column(name = "delete_time")
+    private OffsetDateTime delete;
+    @Column(
+            name = "is_active",
+            nullable = false
+    )
+    private boolean isActive = true;
 }

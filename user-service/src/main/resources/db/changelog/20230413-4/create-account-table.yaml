@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20230413-4
+      author: Herman Makhiyanov
+      changes:
+        - createTable:
+            tableName: account
+            columns:
+              - column:
+                  name: account_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: account_balance
+                  type: bigint
+              - column:
+                  name: create_time
+                  type: timestamp
+              - column:
+                  name: update_time
+                  type: timestamp
+              - column:
+                  name: delete_time
+                  type: timestamp
+              - column:
+                  name: is_active
+                  type: boolean

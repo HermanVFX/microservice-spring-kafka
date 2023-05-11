@@ -8,6 +8,5 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface AccountMapper {
 
-    @Mapping(target = "isActive", ignore = true)
     AccountDto accountToAccountDto(Account account);
 }

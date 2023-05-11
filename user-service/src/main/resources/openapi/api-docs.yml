@@ -210,7 +210,7 @@ components:
           description: User last name
         birthday:
           type: string
-          format: date
+          format: date-time
           description: User birthday
         departmentId:
           type: string
@@ -233,7 +233,7 @@ components:
           description: User last name
         birthday:
           type: string
-          format: date
+          format: date-time
           description: User birthday
 # --- Phone ---
     PhoneDto:
@@ -275,16 +275,8 @@ components:
           type: string
           format: uuid
           description: Account id
-        registrationDate:
-          type: string
-          format: date
-          description: Account registration date
-        updateDate:
-          type: string
-          format: date
-          description: Account update date
-        isActive:
-          type: boolean
-          description: Account status
+        balance:
+          type: number
+          description: Account balance
         user:
           $ref: '#/components/schemas/UserDto'

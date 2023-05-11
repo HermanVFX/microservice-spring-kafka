@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -27,13 +28,21 @@ public class Account {
     @GeneratedValue(generator = "UUID")
     private UUID id;
 
-    private Date registrationDate;
-
-    private Date updateDate;
-
-    @Column(name = "is_active", nullable = false)
-    private boolean isActive;
+    @Column(name = "account_balance", nullable = false)
+    private Long balance;
 
     @OneToOne(mappedBy = "account")
     private User user;
+
+    @Column(name = "create_time", nullable = false)
+    private OffsetDateTime create;
+    @Column(name = "update_time")
+    private OffsetDateTime update;
+    @Column(name = "delete_time")
+    private OffsetDateTime delete;
+    @Column(
+            name = "is_active",
+            nullable = false
+    )
+    private boolean isActive = true;
 }

@@ -1,0 +1,149 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20230414-1
+      author: Herman Makhiyanov
+      changes:
+        - insert:
+            tableName: usr
+            columns:
+              - column:
+                  name: usr_id
+                  value: '8d5f9db8-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: department_id
+                  value: '8d5f9db8-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: email_id
+                  value: '8d5fa2e0-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: phone_id
+                  value: '8d5fa2e0-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: account_id
+                  value: '8d5faa6a-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: first_name
+                  value: 'Ryan'
+              - column:
+                  name: last_name
+                  value: 'Gosling'
+              - column:
+                  name: birthday
+                  value: '2006-04-14 12:01:08.000000'
+              - column:
+                  name: create_time
+                  value: '2023-04-14 12:01:08.000000'
+        - insert:
+            tableName: usr
+            columns:
+              - column:
+                  name: usr_id
+                  value: '8d5fb15e-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: department_id
+                  value: '8d5f9db8-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: email_id
+                  value: '8d5fb5e6-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: phone_id
+                  value: '8d5fb2e4-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: account_id
+                  value: '8d5fb79e-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: first_name
+                  value: 'Tom'
+              - column:
+                  name: last_name
+                  value: 'Mur'
+              - column:
+                  name: birthday
+                  value: '2009-04-14 12:01:08.000000'
+              - column:
+                  name: create_time
+                  value: '2023-04-14 12:01:10.000000'
+        - insert:
+            tableName: phone
+            columns:
+              - column:
+                  name: phone_id
+                  value: '8d5fa2e0-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: work_phone
+                  value: '89288888888'
+              - column:
+                  name: home_phone
+                  value: '89289999999'
+              - column:
+                  name: alternative_phone
+                  value: '89280000000'
+              - column:
+                  name: create_time
+                  value: '2023-04-14 12:01:08.000000'
+        - insert:
+            tableName: phone
+            columns:
+              - column:
+                  name: phone_id
+                  value: '8d5fb2e4-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: work_phone
+                  value: '89288888881'
+              - column:
+                  name: home_phone
+                  value: '89289999991'
+              - column:
+                  name: alternative_phone
+                  value: '89280000001'
+              - column:
+                  name: create_time
+                  value: '2023-04-14 12:01:11.000000'
+        - insert:
+            tableName: email
+            columns:
+              - column:
+                  name: email_id
+                  value: '8d5fa2e0-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: email_address
+                  value: 'ryan@mail.ru'
+              - column:
+                  name: create_time
+                  value: '2023-04-14 12:01:08.000000'
+        - insert:
+            tableName: email
+            columns:
+              - column:
+                  name: email_id
+                  value: '8d5fb5e6-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: email_address
+                  value: 'tom@mail.ru'
+              - column:
+                  name: create_time
+                  value: '2023-04-14 12:01:15.000000'
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: account_id
+                  value: '8d5faa6a-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: account_balance
+                  value: 5600
+              - column:
+                  name: create_time
+                  value: '2023-04-14 12:01:08.000000'
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: account_id
+                  value: '8d5fb79e-daa2-11ed-afa1-0242ac120002'
+              - column:
+                  name: account_balance
+                  value: 10000
+              - column:
+                  name: create_time
+                  value: '2023-04-14 12:01:08.000000'

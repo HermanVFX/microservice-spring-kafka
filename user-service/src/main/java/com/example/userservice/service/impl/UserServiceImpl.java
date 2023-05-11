@@ -2,12 +2,14 @@ package com.example.userservice.service.impl;
 
 import com.example.userservice.dto.ShortUserDto;
 import com.example.userservice.dto.UserDto;
+import com.example.userservice.mapper.PhoneMapper;
 import com.example.userservice.mapper.UserMapper;
 import com.example.userservice.model.User;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -23,7 +25,10 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
+    private final PhoneMapper phoneMapper;
     private final UserMapper userMapper;
+
     private final KafkaTemplate<Long, UserDto> kafkaStarshipTemplate;
     private final ObjectMapper objectMapper;
 
@@ -53,7 +58,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public UserDto update(UserDto user, UUID id) {
-        return null;
+        userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User with id [" + id + "] does not found"));
+        User updateUser = userMapper.userDtoToUser(user);
+        return userMapper.userToUserDto(userRepository.save(updateUser));
     }
 
     @Transactional

@@ -19,6 +19,8 @@ public interface UserMapper {
 
     UserDto userToUserDto(User entity);
 
+    User userDtoToUser(UserDto dto);
+
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "departmentId", ignore = true)
     @Mapping(target = "email", ignore = true)

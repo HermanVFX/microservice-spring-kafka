@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20230413-3
+      author: Herman Makhiyanov
+      changes:
+        - createTable:
+            tableName: email
+            columns:
+              - column:
+                  name: email_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: email_address
+                  type: varchar
+              - column:
+                  name: create_time
+                  type: timestamp
+              - column:
+                  name: update_time
+                  type: timestamp
+              - column:
+                  name: delete_time
+                  type: timestamp
+              - column:
+                  name: is_active
+                  type: boolean

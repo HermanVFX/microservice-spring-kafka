@@ -1,0 +1,47 @@
+-- insert into uzers.usr (usr_id,
+--                        department_id,
+--                        email_id,
+--                        phone_id,
+--                        account_id,
+--                        first_name,
+--                        last_name,
+--                        birthday,
+--                        create_time)
+-- values ('8d5f9db8-daa2-11ed-afa1-0242ac120002', '8d5f9db8-daa2-11ed-afa1-0242ac120002',
+--         '8d5fa2e0-daa2-11ed-afa1-0242ac120002', '8d5fa2e0-daa2-11ed-afa1-0242ac120002',
+--         '8d5faa6a-daa2-11ed-afa1-0242ac120002',
+--         'Ryan', 'Gosling',
+--         '2006-04-14 12:01:08.000000', '2023-04-14 12:01:08.000000'),
+--        ('8d5fb15e-daa2-11ed-afa1-0242ac120002', '8d5f9db8-daa2-11ed-afa1-0242ac120002',
+--         '8d5fb5e6-daa2-11ed-afa1-0242ac120002', '8d5fb2e4-daa2-11ed-afa1-0242ac120002',
+--         '8d5fb79e-daa2-11ed-afa1-0242ac120002',
+--         'Tom', 'Mur',
+--         '2009-04-14 12:01:08.000000', '2023-04-14 12:01:10.000000');
+--
+-- insert into uzers.phone (phone_id,
+--                          work_phone,
+--                          home_phone,
+--                          alternative_phone,
+--                          create_time)
+-- values ('8d5fa2e0-daa2-11ed-afa1-0242ac120002',
+--         '89288888888',
+--         '89289999999',
+--         '89280000000',
+--         '2023-04-14 12:01:08.000000'),
+--        ('8d5fb2e4-daa2-11ed-afa1-0242ac120002',
+--         '89288888881',
+--         '89289999991',
+--         '89280000001',
+--         '2023-04-14 12:01:11.000000');
+--
+-- insert into uzers.email (email_id, email_address, create_time)
+-- values ('8d5fa2e0-daa2-11ed-afa1-0242ac120002',
+--         'sdf@asd',
+--         '2023-04-14 12:01:08.000000'),
+--        ('8d5fb5e6-daa2-11ed-afa1-0242ac120002',
+--         'asd@adsa',
+--         '2023-04-14 12:01:15.000000');
+--
+-- insert into uzers.account (account_id, account_balance, create_time)
+-- values ('8d5faa6a-daa2-11ed-afa1-0242ac120002', 5000, '2023-04-14 12:01:08.000000'),
+--        ('8d5fb79e-daa2-11ed-afa1-0242ac120002', 15000, '2023-04-14 12:01:08.000000');
